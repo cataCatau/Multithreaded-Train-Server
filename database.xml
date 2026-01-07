@@ -7,8 +7,8 @@
         <statie_destinatie>Bucuresti-Nord</statie_destinatie>
         <ora_plecare>07:35</ora_plecare>
         <ora_sosire>16:20</ora_sosire>
-        <intarziere>10</intarziere>
-        <early>0</early>
+        <intarziere>0</intarziere>
+        <early>3</early>
         <locuri_libere>45</locuri_libere>
         <ruta>
             <oprire>
@@ -1480,7 +1480,7 @@
         <ora_plecare>07:00</ora_plecare>
         <ora_sosire>08:45</ora_sosire>
         <intarziere>0</intarziere>
-        <early>100</early>
+        <early>60</early>
         <locuri_libere>250</locuri_libere>
         <ruta>
             <oprire>
@@ -2432,7 +2432,7 @@
         <ora_sosire>17:05</ora_sosire>
         <intarziere>2</intarziere>
         <early>0</early>
-        <locuri_libere>150</locuri_libere>
+        <locuri_libere>149</locuri_libere>
         <ruta>
             <oprire>
                 <nume>Bucuresti-Nord</nume>

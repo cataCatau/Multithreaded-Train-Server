@@ -488,9 +488,9 @@ void report(char *buf, const char *comanda_curenta)
             if (strcmp(id_tren, Trenuri[i].id) == 0)
             {
                 if (strcmp(comanda_curenta, "intarziere") == 0)
-                    Trenuri[i].intarziere = minute;
+                    Trenuri[i].intarziere += minute;
                 else
-                    Trenuri[i].early = minute;
+                    Trenuri[i].early += minute;
                 index = i;
                 break;
             }
