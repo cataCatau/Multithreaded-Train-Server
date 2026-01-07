@@ -35,7 +35,6 @@ typedef struct
 extern tren Trenuri[1024];
 extern int nr_trenuri;
 extern pthread_mutex_t file_lock;
-extern pthread_mutex_t mlock;
 extern pthread_mutex_t ram_lock;
 
 void load_trains_from_xml(const char *filename);

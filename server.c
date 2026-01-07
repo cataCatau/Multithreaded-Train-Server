@@ -33,7 +33,6 @@ int sd;                                                // descriptorul de socket
 int nthreads;                                          // numarul de threaduri
 pthread_mutex_t file_lock = PTHREAD_MUTEX_INITIALIZER; // mutex pentru accesul la fisier
 pthread_mutex_t ram_lock = PTHREAD_MUTEX_INITIALIZER;  // mutex pentru modificare ram bilete/intarziere/avans
-pthread_mutex_t mlock = PTHREAD_MUTEX_INITIALIZER;     // variabila mutex ce va fi partajata de threaduri
 
 void raspunde(int cl, int idThread, ClientState *state);
 
@@ -116,12 +115,12 @@ void *treat(void *arg)
   for (;;)
   {
     socklen_t length = sizeof(from);
-    // pthread_mutex_lock(&mlock);
+
     if ((client = accept(sd, (struct sockaddr *)&from, &length)) < 0)
     {
       perror("[thread]Eroare la accept().\n");
     }
-    // pthread_mutex_unlock(&mlock);
+
     threadsPool[(long)arg].thCount++;
 
     ClientState state = {.is_logged_in = false, .is_admin = false};

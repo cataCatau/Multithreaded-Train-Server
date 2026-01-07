@@ -118,10 +118,16 @@ void update_hour(char *temp, int index)
     total_minute -= Trenuri[index].early;
     ora = total_minute / 60;
     minut = total_minute % 60;
-    if (minut > 9)
-        sprintf(temp, "%d:%d", ora, minut);
+    char temp_minut[3];
+    if (ora > 9)
+        sprintf(temp, "%d:", ora);
     else
-        sprintf(temp, "%d:0%d", ora, minut);
+        sprintf(temp, "0%d:", ora);
+    if (minut > 9)
+        sprintf(temp_minut, "%d", minut);
+    else
+        sprintf(temp_minut, "0%d", minut);
+    strcat(temp, temp_minut);
 }
 void get_train_info(char *buf)
 {
@@ -179,6 +185,7 @@ void get_schedule(int cl, char *buf)
     char s_plecare[50], s_destinatie[50], garbage[50];
     nr_arg = sscanf(buf, "%49s %49s %s", s_plecare, s_destinatie, garbage);
     char temp[512];
+    bool gasit = false;
     if (nr_arg == 3)
     {
         strcpy(temp, "Format gresit, formatul corect este get_schedule *<statie> *<statie>\n<GATA>");
@@ -187,12 +194,6 @@ void get_schedule(int cl, char *buf)
     {
         if (nr_arg < 0)
             nr_arg = 0;
-        sprintf(temp, "%-6s | %-18s | %-18s | %-5s | %-5s | %-8s | %-10s\n",
-                "ID", "Plecare", "Destinatie", "Ora P", "Ora S", "Avans", "Intarziere");
-        write(cl, temp, strlen(temp));
-
-        sprintf(temp, "------------------------------------------------------------------------------------------\n");
-        write(cl, temp, strlen(temp));
         for (int i = 0; i < nr_trenuri; i++)
         {
             bool afiseaza = false;
@@ -209,6 +210,16 @@ void get_schedule(int cl, char *buf)
                     strcmp(Trenuri[i].statie_destinatie, s_destinatie) == 0)
                     afiseaza = true;
             }
+            if (afiseaza == true && gasit == false)
+            {
+                gasit = true;
+                sprintf(temp, "%-6s | %-18s | %-18s | %-5s | %-5s | %-8s | %-10s\n",
+                        "ID", "Plecare", "Destinatie", "Ora P", "Ora S", "Avans", "Intarziere");
+                write(cl, temp, strlen(temp));
+
+                sprintf(temp, "------------------------------------------------------------------------------------------\n");
+                write(cl, temp, strlen(temp));
+            }
             if (afiseaza)
             {
                 sprintf(temp, "%-6s | %-18s | %-18s | %-5s | %-5s | %-3d min  | %-3d min   \n",
@@ -222,6 +233,10 @@ void get_schedule(int cl, char *buf)
                 write(cl, temp, strlen(temp));
                 usleep(1000);
             }
+        }
+        if (gasit == false)
+        {
+            write(cl, "Nu sunt trenuri pe aceasta ruta", strlen("Nu sunt trenuri pe aceasta ruta"));
         }
         strcpy(temp, "<GATA>");
     }
@@ -623,5 +638,5 @@ void raspunde(int cl, int idThread, ClientState *state)
             printf("[Thread %d] ", idThread);
             perror("[Thread]Eroare la write() catre client.\n");
         }
-        }
+    }
 }
