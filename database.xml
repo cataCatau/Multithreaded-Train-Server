@@ -2,181 +2,146 @@
 <mersul_trenurilor>
 
     <tren>
-        <id>IR1751</id>
-        <statie_plecare>Bucuresti-Nord</statie_plecare>
-        <statie_destinatie>Suceava</statie_destinatie>
-        <ora_plecare>16:00</ora_plecare>
-        <ora_sosire>23:00</ora_sosire>
-        <intarziere>2</intarziere>
-        <early>0</early>
-        <locuri_libere>35</locuri_libere>
-        <ruta>
-            <oprire>
-                <nume>Bucuresti-Nord</nume>
-                <sosire>16:00</sosire>
-                <plecare>16:00</plecare>
-            </oprire>
-            <oprire>
-                <nume>Ploiesti-Sud</nume>
-                <sosire>11:45</sosire>
-                <plecare>11:48</plecare>
-            </oprire>
-            <oprire>
-                <nume>Buzau</nume>
-                <sosire>12:50</sosire>
-                <plecare>13:00</plecare>
-            </oprire>
-            <oprire>
-                <nume>Bacau</nume>
-                <sosire>15:30</sosire>
-                <plecare>15:40</plecare>
-            </oprire>
-            <oprire>
-                <nume>Suceava</nume>
-                <sosire>23:00</sosire>
-                <plecare>23:00</plecare>
-            </oprire>
-        </ruta>
-    </tren>
-
-    <tren>
-        <id>IR1633</id>
-        <statie_plecare>Bucuresti-Nord</statie_plecare>
-        <statie_destinatie>Brasov</statie_destinatie>
-        <ora_plecare>09:00</ora_plecare>
-        <ora_sosire>11:45</ora_sosire>
-        <intarziere>0</intarziere>
-        <early>0</early>
-        <locuri_libere>0</locuri_libere>
-        <ruta>
-            <oprire>
-                <nume>Bucuresti-Nord</nume>
-                <sosire>09:00</sosire>
-                <plecare>09:00</plecare>
-            </oprire>
-            <oprire>
-                <nume>Ploiesti-Vest</nume>
-                <sosire>09:40</sosire>
-                <plecare>09:42</plecare>
-            </oprire>
-            <oprire>
-                <nume>Sinaia</nume>
-                <sosire>10:30</sosire>
-                <plecare>10:32</plecare>
-            </oprire>
-            <oprire>
-                <nume>Predeal</nume>
-                <sosire>11:00</sosire>
-                <plecare>11:05</plecare>
-            </oprire>
-            <oprire>
-                <nume>Brasov</nume>
-                <sosire>11:45</sosire>
-                <plecare>11:45</plecare>
-            </oprire>
-        </ruta>
-    </tren>
-
-    <tren>
-        <id>R5403</id>
-        <statie_plecare>Iasi</statie_plecare>
-        <statie_destinatie>Bacau</statie_destinatie>
-        <ora_plecare>07:30</ora_plecare>
-        <ora_sosire>09:45</ora_sosire>
-        <intarziere>0</intarziere>
-        <early>2</early>
-        <locuri_libere>100</locuri_libere>
-        <ruta>
-            <oprire>
-                <nume>Iasi</nume>
-                <sosire>07:30</sosire>
-                <plecare>07:30</plecare>
-            </oprire>
-            <oprire>
-                <nume>Scanteia</nume>
-                <sosire>08:00</sosire>
-                <plecare>08:01</plecare>
-            </oprire>
-            <oprire>
-                <nume>Roman</nume>
-                <sosire>08:50</sosire>
-                <plecare>09:00</plecare>
-            </oprire>
-            <oprire>
-                <nume>Bacau</nume>
-                <sosire>09:45</sosire>
-                <plecare>09:45</plecare>
-            </oprire>
-        </ruta>
-    </tren>
-
-    <tren>
-        <id>IC582</id>
-        <statie_plecare>Constanta</statie_plecare>
-        <statie_destinatie>Bucuresti-Nord</statie_destinatie>
-        <ora_plecare>13:00</ora_plecare>
-        <ora_sosire>15:15</ora_sosire>
+        <id>IR01</id>
+        <statie_plecare>Cluj-Napoca</statie_plecare>
+        <statie_destinatie>Oradea</statie_destinatie>
+        <ora_plecare>17:30</ora_plecare>
+        <ora_sosire>20:00</ora_sosire>
         <intarziere>10</intarziere>
         <early>0</early>
-        <locuri_libere>5</locuri_libere>
+        <locuri_libere>99</locuri_libere>
+        <ruta>
+            <oprire>
+                <nume>Cluj-Napoca</nume>
+                <sosire>-</sosire>
+                <plecare>17:30</plecare>
+            </oprire>
+            <oprire>
+                <nume>Huedin</nume>
+                <sosire>17:45</sosire>
+                <plecare>17:46</plecare>
+            </oprire>
+            <oprire>
+                <nume>Oradea</nume>
+                <sosire>20:00</sosire>
+                <plecare>-</plecare>
+            </oprire>
+        </ruta>
+    </tren>
+
+    <tren>
+        <id>IR02</id>
+        <statie_plecare>Constanta</statie_plecare>
+        <statie_destinatie>Bucuresti-Nord</statie_destinatie>
+        <ora_plecare>15:00</ora_plecare>
+        <ora_sosire>17:45</ora_sosire>
+        <intarziere>0</intarziere>
+        <early>0</early>
+        <locuri_libere>50</locuri_libere>
         <ruta>
             <oprire>
                 <nume>Constanta</nume>
-                <sosire>13:00</sosire>
-                <plecare>13:00</plecare>
-            </oprire>
-            <oprire>
-                <nume>Medgidia</nume>
-                <sosire>13:30</sosire>
-                <plecare>13:32</plecare>
+                <sosire>-</sosire>
+                <plecare>15:00</plecare>
             </oprire>
             <oprire>
                 <nume>Fetesti</nume>
-                <sosire>14:00</sosire>
-                <plecare>14:02</plecare>
+                <sosire>16:00</sosire>
+                <plecare>16:02</plecare>
             </oprire>
             <oprire>
                 <nume>Bucuresti-Nord</nume>
-                <sosire>15:15</sosire>
-                <plecare>15:15</plecare>
+                <sosire>17:45</sosire>
+                <plecare>-</plecare>
             </oprire>
         </ruta>
     </tren>
 
     <tren>
-        <id>IR72</id>
-        <statie_plecare>Timisoara</statie_plecare>
-        <statie_destinatie>Bucuresti-Nord</statie_destinatie>
-        <ora_plecare>08:00</ora_plecare>
-        <ora_sosire>16:00</ora_sosire>
-        <intarziere>45</intarziere>
+        <id>IR03</id>
+        <statie_plecare>Iasi</statie_plecare>
+        <statie_destinatie>Suceava</statie_destinatie>
+        <ora_plecare>17:15</ora_plecare>
+        <ora_sosire>19:00</ora_sosire>
+        <intarziere>0</intarziere>
+        <early>0</early>
+        <locuri_libere>80</locuri_libere>
+        <ruta>
+            <oprire>
+                <nume>Iasi</nume>
+                <sosire>-</sosire>
+                <plecare>17:15</plecare>
+            </oprire>
+            <oprire>
+                <nume>Pascani</nume>
+                <sosire>18:00</sosire>
+                <plecare>18:10</plecare>
+            </oprire>
+            <oprire>
+                <nume>Suceava</nume>
+                <sosire>19:00</sosire>
+                <plecare>-</plecare>
+            </oprire>
+        </ruta>
+    </tren>
+
+    <tren>
+        <id>IR04</id>
+        <statie_plecare>Arad</statie_plecare>
+        <statie_destinatie>Timisoara</statie_destinatie>
+        <ora_plecare>16:50</ora_plecare>
+        <ora_sosire>17:50</ora_sosire>
+        <intarziere>0</intarziere>
         <early>0</early>
         <locuri_libere>200</locuri_libere>
         <ruta>
             <oprire>
+                <nume>Arad</nume>
+                <sosire>-</sosire>
+                <plecare>16:50</plecare>
+            </oprire>
+            <oprire>
+                <nume>Vinga</nume>
+                <sosire>17:20</sosire>
+                <plecare>17:21</plecare>
+            </oprire>
+            <oprire>
                 <nume>Timisoara</nume>
-                <sosire>08:00</sosire>
-                <plecare>08:00</plecare>
+                <sosire>17:50</sosire>
+                <plecare>-</plecare>
             </oprire>
+        </ruta>
+    </tren>
+
+    <tren>
+        <id>IR05</id>
+        <statie_plecare>Bucuresti-Nord</statie_plecare>
+        <statie_destinatie>Brasov</statie_destinatie>
+        <ora_plecare>14:00</ora_plecare>
+        <ora_sosire>16:50</ora_sosire>
+        <intarziere>30</intarziere>
+        <early>0</early>
+        <locuri_libere>10</locuri_libere>
+        <ruta>
             <oprire>
-                <nume>Lugoj</nume>
-                <sosire>09:00</sosire>
-                <plecare>09:03</plecare>
-            </oprire>
-            <oprire>
-                <nume>Drobeta-Turnu-Severin</nume>
-                <sosire>11:30</sosire>
-                <plecare>11:35</plecare>
-            </oprire>
-            <oprire>
-                <nume>Craiova</nume>
-                <sosire>13:45</sosire>
+                <nume>Bucuresti-Nord</nume>
+                <sosire>-</sosire>
                 <plecare>14:00</plecare>
             </oprire>
             <oprire>
-                <nume>Bucuresti-Nord</nume>
-                <sosire>16:00</sosire>
+                <nume>Ploiesti-Vest</nume>
+                <sosire>14:45</sosire>
+                <plecare>14:50</plecare>
+            </oprire>
+            <oprire>
+                <nume>Sinaia</nume>
+                <sosire>15:50</sosire>
                 <plecare>16:00</plecare>
+            </oprire>
+            <oprire>
+                <nume>Brasov</nume>
+                <sosire>16:50</sosire>
+                <plecare>-</plecare>
             </oprire>
         </ruta>
     </tren>

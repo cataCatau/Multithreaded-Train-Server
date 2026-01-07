@@ -142,11 +142,6 @@ void get_train_info(char *buf)
             strcat(buf, temp);
             sprintf(temp, "%-20s | %-10s | %-10s\n", "STATIA", "SOSIRE", "PLECARE");
             strcat(buf, temp);
-            sprintf(temp, "%-20s | %-10s | %-10s\n",
-                    Trenuri[i].statie_plecare,
-                    "-",
-                    Trenuri[i].ora_plecare);
-            strcat(buf, temp);
             for (int k = 0; k < Trenuri[i].nr_opriri; k++)
             {
                 sprintf(temp, "%-20s | %-10s | %-10s\n",
@@ -155,11 +150,6 @@ void get_train_info(char *buf)
                         Trenuri[i].ruta[k].ora_plecare);
                 strcat(buf, temp);
             }
-            sprintf(temp, "%-20s | %-10s | %-10s\n\n",
-                    Trenuri[i].statie_destinatie,
-                    Trenuri[i].ora_sosire,
-                    "-");
-            strcat(buf, temp);
             if (Trenuri[i].intarziere != 0)
                 sprintf(temp, "Trenul %s are o intarziere de %d minute.Acesta este estimat sa soseasca la statia finala la ora ", Trenuri[i].id, Trenuri[i].intarziere);
             else if (Trenuri[i].early != 0)
@@ -265,26 +255,27 @@ void get_departures(int cl, char *nume_statie)
 
     for (int i = 0; i < nr_trenuri; i++)
     {
-        if (strcmp(nume_statie, Trenuri[i].statie_plecare) == 0)
-        {
-            int tren_ora, tren_minute;
-            sscanf(Trenuri[i].ora_plecare, "%d:%d", &tren_ora, &tren_minute);
-            int tren_minute_total = tren_ora * 60 + tren_minute;
-            int diferenta = tren_minute_total - curent_minute_total;
-
-            if (diferenta < 0)
-                diferenta += 1440;
-
-            if (diferenta >= 0 && diferenta <= 60)
+        for (int j = 0; j < Trenuri[i].nr_opriri - 1; j++)
+            if (strcmp(nume_statie, Trenuri[i].ruta[j].nume_statie) == 0)
             {
-                gasit = true;
-                sprintf(temp, "%-6s | %-15s | %-7s | %d min\n",
-                        Trenuri[i].id,
-                        Trenuri[i].statie_destinatie,
-                        Trenuri[i].ora_plecare, diferenta);
-                write(cl, temp, strlen(temp));
+                int tren_ora, tren_minute;
+                sscanf(Trenuri[i].ruta[j].ora_plecare, "%d:%d", &tren_ora, &tren_minute);
+                int tren_minute_total = tren_ora * 60 + tren_minute;
+                int diferenta = tren_minute_total - curent_minute_total;
+
+                if (diferenta < 0)
+                    diferenta += 1440;
+
+                if (diferenta >= 0 && diferenta <= 60)
+                {
+                    gasit = true;
+                    sprintf(temp, "%-6s | %-15s | %-7s | %d min\n",
+                            Trenuri[i].id,
+                            Trenuri[i].statie_destinatie,
+                            Trenuri[i].ruta[j].ora_plecare, diferenta);
+                    write(cl, temp, strlen(temp));
+                }
             }
-        }
     }
     if (!gasit)
     {
@@ -318,25 +309,27 @@ void get_arrivals(int cl, char *nume_statie)
 
     for (int i = 0; i < nr_trenuri; i++)
     {
-        if (strcmp(nume_statie, Trenuri[i].statie_destinatie) == 0)
-        {
-            int tren_ora, tren_minute;
-            sscanf(Trenuri[i].ora_sosire, "%d:%d", &tren_ora, &tren_minute);
-            int tren_minute_total = tren_ora * 60 + tren_minute;
-            int diferenta = tren_minute_total - curent_minute_total;
-            if (diferenta < 0)
-                diferenta += 1440;
-            if (diferenta >= 0 && diferenta <= 60)
+        for (int j = 1; j < Trenuri[i].nr_opriri; j++)
+            if (strcmp(nume_statie, Trenuri[i].ruta[j].nume_statie) == 0)
             {
-                gasit = true;
-                sprintf(temp, "%-6s | %-15s | %-7s | %d min\n",
-                        Trenuri[i].id,
-                        Trenuri[i].statie_plecare,
-                        Trenuri[i].ora_sosire,
-                        diferenta);
-                write(cl, temp, strlen(temp));
+
+                int tren_ora, tren_minute;
+                sscanf(Trenuri[i].ruta[j].ora_sosire, "%d:%d", &tren_ora, &tren_minute);
+                int tren_minute_total = tren_ora * 60 + tren_minute;
+                int diferenta = tren_minute_total - curent_minute_total;
+                if (diferenta < 0)
+                    diferenta += 1440;
+                if (diferenta >= 0 && diferenta <= 60)
+                {
+                    gasit = true;
+                    sprintf(temp, "%-6s | %-15s | %-7s | %d min\n",
+                            Trenuri[i].id,
+                            Trenuri[i].statie_plecare,
+                            Trenuri[i].ruta[j].ora_sosire,
+                            diferenta);
+                    write(cl, temp, strlen(temp));
+                }
             }
-        }
     }
     if (!gasit)
     {
