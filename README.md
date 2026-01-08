@@ -48,3 +48,90 @@ Ensure you have the GCC compiler and Libxml2 development libraries installed.
 ```bash
 sudo apt-get update
 sudo apt-get install build-essential libxml2-dev
+```
+### Compilation
+Clone the repository and compile the source code using make:
+```Bash
+git clone [https://github.com/cataCatau/Multithreaded-Train-Server.git](https://github.com/cataCatau/Multithreaded-Train-Server.git)
+cd Multithreaded-Train-Server
+make
+```
+This will generate two executables: server and client.
+## 💻 Usage
+### 1. Start the Server
+Run the server first. It listens on port 3010 by default.
+```Bash
+./server
+```
+### 2. Start the Client
+Open a new terminal window to simulate a user:
+```Bash
+./client
+```
+Note: To connect from a different machine, update the IP address in client.c before compiling.
+## 🔐 Authentication
+The system comes with pre-configured users in users.txt:
+
+| Role | Username | Password | Permissions |
+| :--- | :--- | :--- | :--- |
+| **Admin** | `admin` | `admin` | Report delays, View schedules |
+| **User** | `catau` | `Alorap9*` | Buy tickets, View schedules |
+
+## 📡 Command Reference
+Once connected via the client, use the following commands:
+
+### General Commands (No Login Required)
+**help** - Display the list of available commands.
+
+**login [username] [password]** - Authenticate into the system.
+
+**register [username] [password]** - Create a new user account.
+
+**exit** - Disconnect from the server.
+
+### Information Commands
+**get_schedule** - Display the complete train schedule.
+
+**get_schedule [station]** - List trains departing from a specific station.
+
+**get_schedule [station] [station]** - List trains departing from a specific station and heading to a specific station.
+
+**get_train_info [ID]** - Show detailed route and status for a train ID.
+
+**get_departures [station]** - List trains leaving a station in the next hour.
+
+**get_arrivals [station]** - List trains arriving at a station in the next hour.
+
+**get_delays** - Show all trains currently delayed.
+
+**get_earlys** - Show all trains running ahead of schedule.
+
+### User Actions (Login Required)
+
+**logout** - Sign out of the current session.
+
+**buy_ticket [TrainID]** - Purchase a ticket (decrements available seat count).
+
+### Admin Actions (Admin Only)
+
+**report_delay [TrainID] [minutes]** - Report a delay (updates system & XML).
+
+**report_early [TrainID] [minutes]** - Report an early arrival.
+
+## 📂 Project Structure
+```text
+├── server.c         # Entry point: Server initialization & Thread Pool
+├── client.c         # Entry point: Client application
+├── commands.c       # Business logic: Command processing & User actions
+├── xml_handler.c    # Data Layer: XML parsing (Libxml2) & Persistence
+├── shared.h         # Header: Shared data structures (struct tren, constants)
+├── database.xml     # Database: Train schedules, routes, and seat counts
+├── users.txt        # Database: User credentials
+└── Makefile         # Build script for automation
+```
+## 👤 Author
+**Catalin Tarca**
+
+**University: Alexandru Ioan Cuza University, Faculty of Computer Science**
+
+**GitHub: cataCatau**
